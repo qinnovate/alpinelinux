@@ -38,4 +38,9 @@ rc-update add hv_fcopy_daemon
 rc-update add hv_kvp_daemon
 rc-update add hv_vss_daemon
 
+echo -e "${BRIGHTGREEN}Configuring SSH Daemon${RESET}"
+cp /etc/ssh/sshd_config /etc/ssh/sshd_config.ORIGINAL
+sed -i 's:#PermitRootLogin prohibit-password:PermitRootLogin yes:' /etc/ssh/sshd_config
+rc-service sshd restart
+
 echo -e "${BRIGHTGREEN}Done!${RESET}"
