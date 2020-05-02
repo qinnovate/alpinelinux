@@ -40,6 +40,7 @@ rc-update add hv_vss_daemon
 
 echo -e "${BRIGHTGREEN}Configuring SSH Daemon${RESET}"
 if [ ! -f "/etc/ssh/sshd_config.ORIGINAL" ]; then
+	echo -e "${GREEN}Backing up config file${RESET}"
 	cp /etc/ssh/sshd_config /etc/ssh/sshd_config.ORIGINAL
 fi
 sed -i 's:#PermitRootLogin prohibit-password:PermitRootLogin yes:' /etc/ssh/sshd_config
