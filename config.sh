@@ -31,12 +31,13 @@ apk update
 
 echo -e "${BRIGHTGREEN}Installing Hyper-V modules${RESET}"
 apk add hvtools
-rc-service hv_fcopy_daemon start
+#rc-service hv_fcopy_daemon start
 rc-service hv_kvp_daemon start
 rc-service hv_vss_daemon start
-rc-update add hv_fcopy_daemon
+#rc-update add hv_fcopy_daemon
 rc-update add hv_kvp_daemon
 rc-update add hv_vss_daemon
+rc-update -u
 
 echo -e "${BRIGHTGREEN}Configuring SSH Daemon${RESET}"
 if [ ! -f "/etc/ssh/sshd_config.ORIGINAL" ]; then
